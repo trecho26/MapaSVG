@@ -1,0 +1,38 @@
+.prueba {
+    cursor: pointer;
+    opacity: 1;
+    transition: all ease 0.3s;
+}
+
+.prueba:hover {
+    opacity: 0.75;
+}
+
+.low {
+    fill: #ace3bd;
+    stroke: #fff;
+}
+
+.medium {
+    fill: #3fd06b;
+    stroke: #fff;
+}
+
+.hight {
+    fill: #2ab555;
+    stroke: #fff;
+}
+
+.normal {
+    fill: #e1e1e1;
+    stroke: #fff;
+}
+
+.svg {
+    width: 100%;
+    height: auto;
+    stroke: red;
+    stroke-width: 1;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
