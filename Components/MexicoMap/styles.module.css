@@ -1,10 +1,10 @@
-.prueba {
+.state {
     cursor: pointer;
     opacity: 1;
     transition: all ease 0.3s;
 }
 
-.prueba:hover {
+.state:hover {
     opacity: 0.75;
 }
 
@@ -14,7 +14,7 @@
 }
 
 .medium {
-    fill: #3fd06b;
+    fill: #85c440;
     stroke: #fff;
 }
 

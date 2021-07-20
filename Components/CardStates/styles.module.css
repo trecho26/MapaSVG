@@ -1,5 +1,5 @@
 .mapa {
-    width: 60%;
+    width: 90%;
     border-radius: 10px;
     box-shadow: 0px 3px 6px 0 rgb(0 0 0 / 10%);
 }
@@ -24,4 +24,9 @@
 
 .infoMapa {
     flex: 45%;
+}
+
+.citiesItem {
+    color: #85c440;
+    font-weight: 600;
 }

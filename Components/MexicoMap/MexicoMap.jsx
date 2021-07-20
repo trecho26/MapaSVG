@@ -29,7 +29,7 @@ function MexicoMap({ dataStates, selectState }) {
   const svgEl = useRef(null);
 
   useEffect(() => {
-    setData(getValues(dataStates));
+    setData(dataStates);
     const svgPaths = svgEl.current.children;
     Array.from(svgPaths).forEach((path) => {
       path.addEventListener("mouseenter", cargarInfoToolTip);
@@ -39,21 +39,23 @@ function MexicoMap({ dataStates, selectState }) {
   }, []);
 
   const handleSelectState = (e) => {
-    const svgPaths = svgEl.current.children;
-    Array.from(svgPaths).forEach((path) => {
-      path.style.opacity = "1";
-      path.style.stroke = "#fff";
-      if (path.ariaLabel !== e.target.ariaLabel) {
-        path.style.opacity = "0.3";
-      } else {
-        path.style.stroke = "#000";
-      }
-    });
-    const infoState = {
-      estado: e.target.ariaLabel,
-      pedidos: data[e.target.id],
-    };
-    selectState(infoState);
+    if (data[e.target.id].ciudades.length > 0) {
+      const svgPaths = svgEl.current.children;
+      Array.from(svgPaths).forEach((path) => {
+        path.style.opacity = "1";
+        path.style.stroke = "#fff";
+        if (path.ariaLabel !== e.target.ariaLabel) {
+          path.style.opacity = "0.3";
+        } else {
+          path.style.stroke = "#000";
+        }
+      });
+      const infoState = {
+        estado: e.target.ariaLabel,
+        ciudades: data[e.target.id].ciudades,
+      };
+      selectState(infoState);
+    }
   };
 
   const mostrarToolTip = (e) => {
@@ -61,32 +63,26 @@ function MexicoMap({ dataStates, selectState }) {
     document.getElementById("tooltip").style.top = `${e.clientY - 60}px`;
     document.getElementById("tooltip").style.left = `${e.clientX}px`;
   };
+
   const ocultarToolTip = (e) => {
     document.getElementById("tooltip").style.display = "none";
   };
+
   const cargarInfoToolTip = (e) => {
     setDataTooltip(e.target.ariaLabel);
   };
 
-  const getValues = (flatData) => {
-    for (const estado in flatData) {
-      flatData[estado] = Math.floor(Math.random() * (100 - 11));
-    }
-    return flatData;
-  };
   const getColor = (estado) => {
     let cssStyle = "";
-    if (estado < 33.3 && estado > 10) {
-      cssStyle = "low";
-    } else if (estado > 33.3 && estado < 66.6) {
+    if (estado?.ciudades.length > 0) {
       cssStyle = "medium";
-    } else if (estado > 66.6) {
-      cssStyle = "hight";
     } else {
       cssStyle = "normal";
     }
+
     return cssStyle;
   };
+
   return (
     <>
       <Tooltip info={dataTooltip} />
@@ -97,20 +93,22 @@ function MexicoMap({ dataStates, selectState }) {
         className={styles.svg}
         ref={svgEl}
       >
-        {Mexico.locations.map((estado) => (
-          <path
-            onClick={handleSelectState}
-            key={estado.id}
-            d={estado.path}
-            aria-label={estado.name}
-            id={estado.objKey ? estado.objKey : estado.name}
-            className={`${
-              styles[
-                getColor(data[estado.objKey ? estado.objKey : estado.name])
-              ]
-            } ${styles.prueba}`}
-          ></path>
-        ))}
+        {Mexico.locations.map((estado) => {
+          return (
+            <path
+              onClick={handleSelectState}
+              key={estado.id}
+              d={estado.path}
+              aria-label={estado.name}
+              id={estado.objKey ? estado.objKey : estado.name}
+              className={`${
+                styles[
+                  getColor(data[estado.objKey ? estado.objKey : estado.name])
+                ]
+              } ${styles.state}`}
+            ></path>
+          );
+        })}
       </svg>
     </>
   );
