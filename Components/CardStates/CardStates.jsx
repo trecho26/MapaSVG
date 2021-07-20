@@ -179,7 +179,7 @@ function CardStates() {
           <h1>{selectedState.estado}</h1>
           {selectedState.ciudades && (
             <>
-              <h3>Ciudades con cobertura:</h3>
+              <h3>Municipios con cobertura:</h3>
               <ul className={styles.citiesList}>
                 {selectedState.ciudades.map((ciudad) => {
                   return (
