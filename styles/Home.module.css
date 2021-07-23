@@ -6,3 +6,21 @@
     justify-content: center;
     align-items: center;
 }
+
+.btnContainer {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.btnContainer button {
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    padding: 0.5rem 1rem;
+    border-radius: 28px;
+    font-size: 0.875rem;
+    text-decoration: none;
+    background-image: linear-gradient(180deg, #85c440, #85c440 34%, #66d02d);
+}

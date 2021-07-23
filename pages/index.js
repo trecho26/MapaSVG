@@ -17,10 +17,12 @@ export default function Home() {
         <title> Proyecto prueba de Mapa Interactivo y Gráficos </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <button onClick={() => setCountry("mexico")}> Mexico </button>
-      <button onClick={() => setCountry("peru")}> Peru </button>
-      <button onClick={() => setCountry("colombia")}> Colombia </button>
-      <button onClick={() => setCountry("chile")}> Chile </button>
+      <div className={styles.btnContainer}>
+        <button onClick={() => setCountry("mexico")}> Mexico </button>
+        <button onClick={() => setCountry("peru")}> Peru </button>
+        <button onClick={() => setCountry("colombia")}> Colombia </button>
+        <button onClick={() => setCountry("chile")}> Chile </button>
+      </div>
       {country === "mexico" && <CardStatesMexico />}
       {country === "chile" && <CardStatesChile />}
       {country === "peru" && <CardStatesPeru />}
