@@ -14,7 +14,6 @@ export default function Home() {
   return (
     <div className={styles.container}>
       <Head>
-        <title> Proyecto prueba de Mapa Interactivo y Gráficos </title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className={styles.btnContainer}>

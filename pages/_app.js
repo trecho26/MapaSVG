@@ -14,7 +14,6 @@ function MyApp({ Component, pageProps }) {
           name="keywords"
           content="mapa, mapa interactivo, cobertura, mapa de cobertura, mapa cobertura 99 minutos, 99 minutos, trecho26, mapa nacional de cobertura"
         />
-        <meta name="robots" content="noindex, nofollow" />
       </Head>
       <Component {...pageProps} />
     </>
